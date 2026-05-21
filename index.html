@@ -55,11 +55,11 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
 
 .jw-tile { position: relative; overflow: hidden; background: #d9d9d9; cursor: pointer; height: 320px; display: block; text-decoration: none; }
 .jw-tile.wide { grid-column: span 2; height: 280px; }
-.jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: cover; background-position: center; transform: scale(1.05); transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: cover; background-position: center; transform: scale(1.05); transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .jw-tile:hover .jw-tile-bg { transform: scale(1.1); }
-.jw-tile-green { position: absolute; inset: 0; background: #49B649; opacity: 0; transition: opacity 0.35s ease; z-index: 1; }
+.jw-tile-green { position: absolute; inset: 0; background: #49B649; opacity: 0; transition: opacity 0.15s ease; z-index: 1; }
 .jw-tile:hover .jw-tile-green { opacity: 1; }
-.jw-tile-vw { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 3; opacity: 0; transform: translateY(6px); transition: opacity 0.35s ease, transform 0.35s ease; gap: 6px; }
+.jw-tile-vw { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 3; opacity: 0; transform: translateY(6px); transition: opacity 0.15s ease, transform 0.15s ease; gap: 6px; }
 .jw-tile:hover .jw-tile-vw { opacity: 1; transform: translateY(0); }
 .jw-hover-client { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #000; font-family: 'Inter', sans-serif; font-weight: 400; }
 .jw-hover-name { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #000; font-family: 'Inter', sans-serif; }
