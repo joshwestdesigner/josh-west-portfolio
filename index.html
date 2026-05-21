@@ -37,7 +37,7 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
 
 .jw-tile { position: relative; overflow: hidden; background: #d9d9d9; cursor: pointer; height: 320px; display: block; text-decoration: none; }
 .jw-tile.wide { grid-column: span 2; height: 280px; }
-.jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: cover; background-position: center; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: 120%; background-position: center; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .jw-tile:hover .jw-tile-bg { transform: scale(1.04); }
 .jw-tile-green { position: absolute; inset: 0; background: #49B649; opacity: 0; transition: opacity 0.3s; z-index: 1; }
 .jw-tile:hover .jw-tile-green { opacity: 1; }
@@ -137,7 +137,7 @@ var jwProjects = [
   { client:'Starbucks', name:'Forget me not', cat:['campaign','social','ooh','branding'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/forgetmenot_thumbnail.jpeg', url:'work/starbucks-forget-me-not.html' },
   { client:'Original Source', name:'Pack more in', cat:['campaign','ooh','social'], wide:true, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/originalsource_thumbnail.jpg', url:'work/original-source-pack-more-in.html' },
   { client:'Adidas', name:'Team wear', cat:['campaign','branding','social'], wide:false, img:'', url:'work/adidas-team-wear.html' },
-  { client:'COP26', name:'Would you rather?', cat:['campaign','ooh','social'], wide:false, img:'', url:'work/cop26-would-you-rather.html' },
+  { client:'COP26', name:"Would you rather?", cat:['campaign','ooh','social'], wide:false, img:'', url:'work/cop26-would-you-rather.html' },
 ];
 
 function jwSetActive(chip) {
