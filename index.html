@@ -53,7 +53,8 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
 .jw-work-grid { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
 .jw-dyn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-.jw-tile { position: relative; overflow: hidden; background: #d9d9d9; cursor: pointer; height: 320px; display: block; text-decoration: none; }
+.jw-tile { position: relative; overflow: hidden; background: #d9d9d9; cursor: pointer; height: 320px; display: block; text-decoration: none; border-radius: 0; transition: border-radius 0.15s ease; }
+.jw-tile:hover { border-radius: 12px; }
 .jw-tile.wide { grid-column: span 2; height: 280px; }
 .jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: cover; background-position: center; transform: scale(1.05); transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .jw-tile:hover .jw-tile-bg { transform: scale(1.1); }
