@@ -1,10 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh West — Work</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body, .jw { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
 .jw-nav-outer { border-bottom: 1px solid #e8e8e8; background: #fff; position: sticky; top: 0; z-index: 20; }
 .jw-nav-wrap { max-width: 1400px; margin: 0 auto; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; }
@@ -71,6 +76,8 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
   .jw-foot-row { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 </style>
+</head>
+<body>
 
 <div class="jw-nav-outer">
   <div class="jw-nav-wrap">
@@ -79,7 +86,7 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
       <a href="/about">About</a>
     </div>
     <a href="/" class="jw-nav-logo">
-      <img src="https://images.squarespace-cdn.com/content/63e3d51b25510d29936977e0/e918019d-17c9-40e1-b8e1-9ea2696258cc/Subtract.png?content-type=image%2Fpng" alt="Josh West">
+      <img src="https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/logo.png" alt="Josh West">
     </a>
     <div class="jw-nav-right">
       <a href="https://linkedin.com/in/josh-west-9459aba7" target="_blank">LinkedIn</a>
@@ -123,14 +130,14 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
 
 <script>
 var jwProjects = [
-  { client:'Citi', name:'e for education', cat:['campaign','branding','ooh','social'], wide:true, img:'', url:'/work/citi-e-for-education' },
-  { client:'Citi', name:'Paris Paralympic pins', cat:['branding','campaign'], wide:false, img:'', url:'/work/paris-paralympic-pins' },
-  { client:'Adidas', name:'Heat RDY', cat:['campaign','social','ooh','motion'], wide:false, img:'', url:'/work/adidas-heat-rdy' },
-  { client:'Starbucks', name:'Phantom frapp', cat:['campaign','social','motion'], wide:false, img:'', url:'/work/starbucks-phantom-frapp' },
-  { client:'Starbucks', name:'Forget me not', cat:['campaign','social','ooh','branding'], wide:false, img:'', url:'/work/starbucks-forget-me-not' },
-  { client:'Original Source', name:'Pack more in', cat:['campaign','ooh','social'], wide:true, img:'', url:'/work/original-source-pack-more-in' },
-  { client:'Adidas', name:'Team wear', cat:['campaign','branding','social'], wide:false, img:'', url:'/work/adidas-team-wear' },
-  { client:'COP26', name:'Would you rather?', cat:['campaign','ooh','social'], wide:false, img:'', url:'/work/cop26-would-you-rather' },
+  { client:'Citi', name:'e for education', cat:['campaign','branding','ooh','social'], wide:true, img:'', url:'work/citi-e-for-education.html' },
+  { client:'Citi', name:'Paris Paralympic pins', cat:['branding','campaign'], wide:false, img:'', url:'work/paris-paralympic-pins.html' },
+  { client:'Adidas', name:'Heat RDY', cat:['campaign','social','ooh','motion'], wide:false, img:'', url:'work/adidas-heat-rdy.html' },
+  { client:'Starbucks', name:'Phantom frapp', cat:['campaign','social','motion'], wide:false, img:'', url:'work/starbucks-phantom-frapp.html' },
+  { client:'Starbucks', name:'Forget me not', cat:['campaign','social','ooh','branding'], wide:false, img:'', url:'work/starbucks-forget-me-not.html' },
+  { client:'Original Source', name:'Pack more in', cat:['campaign','ooh','social'], wide:true, img:'', url:'work/original-source-pack-more-in.html' },
+  { client:'Adidas', name:'Team wear', cat:['campaign','branding','social'], wide:false, img:'', url:'work/adidas-team-wear.html' },
+  { client:'COP26', name:'Would you rather?', cat:['campaign','ooh','social'], wide:false, img:'', url:'work/cop26-would-you-rather.html' },
 ];
 
 function jwSetActive(chip) {
@@ -186,3 +193,6 @@ window.addEventListener('resize', function() {
 jwSetActive(document.querySelector('[data-filter="all"]'));
 jwBuildGrid('all');
 </script>
+
+</body>
+</html>
