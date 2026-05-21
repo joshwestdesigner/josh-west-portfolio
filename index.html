@@ -1,85 +1,220 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Josh West</title>
+<title>Josh West – Work</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
-#frame { position: fixed; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
-.jw-logo { position: fixed; top: 28px; left: 50%; transform: translateX(-50%); z-index: 10; }
-.jw-logo img { height: 32px; width: auto; display: block; }
+.jw-nav-outer { animation: fadeIn 0.4s ease both; }
+.jw-page-header { animation: fadeUp 0.5s ease 0.1s both; }
+.jw-filters { animation: fadeUp 0.5s ease 0.2s both; }
 
-.jw-skip { position: fixed; bottom: 32px; right: 32px; z-index: 10; font-family: 'Inter', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
-.jw-skip:hover { color: #fff; }
+/* Tile stagger � applied via JS */
+.jw-tile {
+  animation: fadeUp 0.5s ease both;
+}
+
+.jw-nav-outer { border-bottom: 1px solid #bbb; background: #fff; position: sticky; top: 0; z-index: 20; }
+.jw-nav-wrap { max-width: 1400px; margin: 0 auto; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; }
+.jw-nav-left, .jw-nav-right { display: flex; gap: 24px; }
+.jw-nav-wrap a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; font-family: 'Inter', sans-serif; }
+.jw-nav-wrap a:hover { color: #111; }
+.jw-nav-logo { display: flex; align-items: center; }
+.jw-nav-logo img { height: 28px; width: auto; display: block; }
+
+.jw-page-header-border { border-bottom: 1px solid #bbb; }
+.jw-page-header { max-width: 1400px; margin: 0 auto; padding: 56px 32px 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+.jw-page-title { font-size: 72px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; color: #111; line-height: 1; font-family: 'Inter', sans-serif; }
+.jw-page-meta p { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #777; margin-bottom: 8px; text-align: right; font-family: 'Inter', sans-serif; }
+.jw-page-count { font-size: 32px; font-weight: 800; color: #49B649; letter-spacing: -0.02em; text-align: right; font-family: 'Inter', sans-serif; }
+
+.jw-filters-outer { border-bottom: 1px solid #bbb; }
+.jw-filters { max-width: 1400px; margin: 0 auto; display: flex; gap: 6px; padding: 16px 32px; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.jw-filters::-webkit-scrollbar { display: none; }
+.jw-filter-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-right: 6px; white-space: nowrap; font-family: 'Inter', sans-serif; }
+button.jw-chip { padding: 6px 12px; background-color: transparent; border: 1px solid #666; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 400; white-space: nowrap; flex-shrink: 0; border-radius: 999px; transition: border-color 0.2s, color 0.2s; }
+button.jw-chip:hover { border-color: #aaa; color: #333; }
+
+.jw-work-grid { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+.jw-dyn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.jw-tile { position: relative; overflow: hidden; background: #d9d9d9; cursor: pointer; height: 320px; display: block; text-decoration: none; border-radius: 0; transition: border-radius 0.15s ease; }
+.jw-tile:hover { border-radius: 12px; }
+.jw-tile.wide { grid-column: span 2; height: 280px; }
+.jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: cover; background-position: center; transform: scale(1.05); transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.jw-tile:hover .jw-tile-bg { transform: scale(1.1); }
+.jw-tile-green { position: absolute; inset: 0; background: #49B649; opacity: 0; transition: opacity 0.15s ease; z-index: 1; }
+.jw-tile:hover .jw-tile-green { opacity: 1; }
+.jw-tile-vw { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 3; opacity: 0; transform: translateY(6px); transition: opacity 0.15s ease, transform 0.15s ease; gap: 6px; }
+.jw-tile:hover .jw-tile-vw { opacity: 1; transform: translateY(0); }
+.jw-hover-client { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #000; font-family: 'Inter', sans-serif; font-weight: 400; }
+.jw-hover-name { font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #000; font-family: 'Inter', sans-serif; }
+.jw-tile-info { display: none; }
+
+.jw-foot-outer { border-top: 1px solid #bbb; }
+.jw-foot-row { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; justify-content: space-between; align-items: center; }
+.jw-foot-copy { font-size: 10px; letter-spacing: 0.1em; color: #777; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+.jw-foot-email { font-size: 10px; letter-spacing: 0.1em; color: #777; text-decoration: none; text-transform: uppercase; font-family: 'Inter', sans-serif; transition: color 0.2s; }
+.jw-foot-email:hover { color: #111; }
+
+@media (max-width: 900px) {
+  .jw-nav-wrap, .jw-page-header, .jw-filters, .jw-work-grid, .jw-foot-row { padding-left: 24px; padding-right: 24px; }
+  .jw-page-title { font-size: 52px; }
+  .jw-dyn-grid { gap: 14px; }
+  .jw-tile { height: 240px; }
+  .jw-tile.wide { height: 200px; }
+}
+
+@media (max-width: 600px) {
+  .jw-nav-wrap, .jw-filters, .jw-work-grid, .jw-foot-row { padding-left: 20px; padding-right: 20px; }
+  .jw-nav-left, .jw-nav-right { display: none; }
+  .jw-page-header { padding: 32px 20px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .jw-page-title { font-size: 40px; }
+  .jw-page-meta p, .jw-page-count { text-align: left; }
+  .jw-page-count { font-size: 24px; }
+  .jw-dyn-grid { grid-template-columns: 1fr; gap: 12px; }
+  .jw-tile { height: 240px; }
+  .jw-tile.wide { grid-column: span 1; height: 200px; }
+  .jw-foot-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
 </style>
 </head>
 <body>
 
-<div id="frame"></div>
-
-<div class="jw-logo">
-  <img src="https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/logo.png" alt="Josh West">
+<div class="jw-nav-outer">
+  <div class="jw-nav-wrap">
+    <div class="jw-nav-left">
+      <a href="/work">Work</a>
+      <a href="/about">About</a>
+    </div>
+    <a href="/" class="jw-nav-logo">
+      <img src="https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/logo.png" alt="Josh West">
+    </a>
+    <div class="jw-nav-right">
+      <a href="https://linkedin.com/in/josh-west-9459aba7" target="_blank">LinkedIn</a>
+      <a href="mailto:josh.west.designer@gmail.com">Contact</a>
+    </div>
+  </div>
 </div>
 
-<a href="work.html" class="jw-skip">Skip</a>
+<div class="jw-page-header-border">
+  <div class="jw-page-header">
+    <h1 class="jw-page-title">Work</h1>
+    <div class="jw-page-meta">
+      <p>Selected projects</p>
+      <div id="jw-count" class="jw-page-count">08</div>
+    </div>
+  </div>
+</div>
+
+<div class="jw-filters-outer">
+  <div class="jw-filters" id="jw-filters">
+    <button class="jw-chip" data-filter="all">All</button>
+    <button class="jw-chip" data-filter="campaign">Campaign</button>
+    <button class="jw-chip" data-filter="branding">Branding</button>
+    <button class="jw-chip" data-filter="social">Social</button>
+    <button class="jw-chip" data-filter="ooh">OOH</button>
+    <button class="jw-chip" data-filter="motion">Motion</button>
+  </div>
+</div>
+
+<div class="jw-work-grid">
+  <div class="jw-dyn-grid" id="jw-grid"></div>
+</div>
+
+<div class="jw-foot-outer">
+  <div class="jw-foot-row">
+    <div class="jw-foot-copy">&copy; 2026 Josh West</div>
+    <a href="mailto:josh.west.designer@gmail.com" class="jw-foot-email">josh.west.designer@gmail.com</a>
+  </div>
+</div>
 
 <script>
-var images = [
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/eforeducationthumbnail.jpg',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/heat-rdy-beckham-kv_cropped2.png',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/phantomfrapp_thumbnail.jpeg',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/cop26-7.png',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/paralympicpins_thumbnail.jpg',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/forgetmenot_thumbnail.jpeg',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/originalsource_thumbnail.jpg',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/teamwear-team.png',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/cop26-5.png',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/cop26-6.png',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/cop26-9.png',
-  'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/cinch-truck-insitu.png',
+var jwProjects = [
+  { client:'Citi', name:'e for education', cat:['campaign','branding','ooh','social'], wide:true, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/eforeducationthumbnail.jpg', url:'work/citi-e-for-education.html' },
+  { client:'Citi', name:'Paris Paralympic pins', cat:['branding','campaign'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/paralympicpins_thumbnail.jpg', url:'work/paris-paralympic-pins.html' },
+  { client:'Adidas', name:'Heat RDY', cat:['campaign','social','ooh','motion'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/heat-rdy-beckham-kv_cropped2.png', url:'work/adidas-heat-rdy.html' },
+  { client:'Starbucks', name:'Phantom frapp', cat:['campaign','social','motion'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/phantomfrapp_thumbnail.jpeg', url:'work/starbucks-phantom-frapp.html' },
+  { client:'Starbucks', name:'Forget me not', cat:['campaign','social','ooh','branding'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/forgetmenot_thumbnail.jpeg', url:'work/starbucks-forget-me-not.html' },
+  { client:'Original Source', name:'Pack more in', cat:['campaign','ooh','social'], wide:true, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/originalsource_thumbnail.jpg', url:'work/original-source-pack-more-in.html' },
+  { client:'Adidas', name:'Team wear', cat:['campaign','branding','social'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/teamwear-team.png', url:'work/adidas-team-wear.html' },
+  { client:'COP26', name:"Would you rather?", cat:['campaign','ooh','social'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/cop26-1.png', url:'work/cop26-would-you-rather.html' },
 ];
 
-var frame = document.getElementById('frame');
-var started = false;
+function jwSetActive(chip) {
+  document.querySelectorAll('.jw-chip').forEach(function(c) {
+    c.style.backgroundColor = 'transparent';
+    c.style.borderColor = '#666';
+    c.style.color = '#666';
+    c.style.fontWeight = '400';
+  });
+  chip.style.backgroundColor = '#49B649';
+  chip.style.borderColor = '#49B649';
+  chip.style.color = '#000';
+  chip.style.fontWeight = '700';
+}
 
-// Preload all images then start
-var loaded = 0;
-images.forEach(function(src) {
-  var img = new Image();
-  img.onload = img.onerror = function() {
-    loaded++;
-    if (loaded === images.length) runSequence();
-  };
-  img.src = src;
+function jwBuildGrid(filter) {
+  var grid = document.getElementById('jw-grid');
+  grid.innerHTML = '';
+  var isMobile = window.innerWidth <= 600;
+  var useWide = filter === 'all' && !isMobile;
+  var visible = filter === 'all' ? jwProjects : jwProjects.filter(function(p) { return p.cat.indexOf(filter) > -1; });
+
+  visible.forEach(function(p, i) {
+    var isWide = useWide && p.wide;
+    var tile = document.createElement('a');
+    tile.href = p.url;
+    tile.className = 'jw-tile' + (isWide ? ' wide' : '');
+    tile.style.animationDelay = (0.3 + i * 0.08) + 's';
+    tile.addEventListener('animationend', function() {
+      this.style.opacity = '1';
+      this.style.transform = 'none';
+      this.style.animation = 'none';
+    });
+    tile.innerHTML =
+      '<div class="jw-tile-bg" style="' + (p.img ? 'background-image:url(' + p.img + ');' : '') + '"></div>' +
+      '<div class="jw-tile-green"></div>' +
+      '<div class="jw-tile-vw">' +
+        '<div class="jw-hover-client">' + p.client + '</div>' +
+        '<div class="jw-hover-name">' + p.name + '</div>' +
+      '</div>';
+    grid.appendChild(tile);
+  });
+
+  var countEl = document.getElementById('jw-count');
+  if (countEl) countEl.textContent = visible.length < 10 ? '0' + visible.length : '' + visible.length;
+}
+
+document.querySelectorAll('.jw-chip').forEach(function(chip) {
+  chip.addEventListener('click', function() {
+    jwSetActive(chip);
+    jwBuildGrid(chip.getAttribute('data-filter'));
+  });
 });
 
-// Fallback: start after 1.5s even if not all loaded
-setTimeout(function() { runSequence(); }, 1500);
+window.addEventListener('resize', function() {
+  var active = document.querySelector('.jw-chip[style*="49B649"]');
+  jwBuildGrid(active ? active.getAttribute('data-filter') : 'all');
+});
 
-function runSequence() {
-  if (started) return;
-  started = true;
-
-  var i = 0;
-  frame.style.backgroundImage = 'url(' + images[0] + ')';
-
-  var t = setInterval(function() {
-    i++;
-    if (i >= images.length) {
-      clearInterval(t);
-      frame.style.backgroundImage = 'none';
-      setTimeout(function() { window.location.href = 'work.html'; }, 600);
-      return;
-    }
-    frame.style.backgroundImage = 'url(' + images[i] + ')';
-  }, 250);
-}
+jwSetActive(document.querySelector('[data-filter="all"]'));
+jwBuildGrid('all');
 </script>
 
 </body>
