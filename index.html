@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -25,9 +25,7 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 .jw-filters { animation: fadeUp 0.5s ease 0.2s both; }
 
 /* Tile stagger � applied via JS */
-.jw-tile {
-  opacity: 0;
-  animation: fadeUp 0.5s ease both;
+.jw-tile {`n  animation: fadeUp 0.5s ease both;
 }
 
 .jw-nav-outer { border-bottom: 1px solid #bbb; background: #fff; position: sticky; top: 0; z-index: 20; }
@@ -183,6 +181,11 @@ function jwBuildGrid(filter) {
     tile.href = p.url;
     tile.className = 'jw-tile' + (isWide ? ' wide' : '');
     tile.style.animationDelay = (0.3 + i * 0.08) + 's';
+    tile.addEventListener('animationend', function() {
+      this.style.opacity = '1';
+      this.style.transform = 'none';
+      this.style.animation = 'none';
+    });
     tile.innerHTML =
       '<div class="jw-tile-bg" style="' + (p.img ? 'background-image:url(' + p.img + ');' : '') + '"></div>' +
       '<div class="jw-tile-green"></div>' +
