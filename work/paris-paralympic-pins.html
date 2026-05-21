@@ -35,11 +35,13 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 .jw-project-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .jw-tag { padding: 6px 12px; border: 1px solid #666; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Inter', sans-serif; border-radius: 999px; }
 
-.jw-hero { background: #f5f5f5; }
-.jw-hero img { width: 100%; height: auto; display: block; max-height: 600px; object-fit: cover; }
+.jw-project-desc { max-width: 1400px; margin: 0 auto; padding: 48px 32px; animation: fadeUp 0.5s ease 0.2s both; }
+.jw-project-desc p { font-size: 16px; line-height: 1.75; color: #444; max-width: 680px; text-wrap: pretty; margin-bottom: 20px; }
+.jw-project-desc p:last-child { margin-bottom: 0; }
+.jw-project-images { max-width: 1400px; margin: 0 auto; padding: 0 32px 64px; animation: fadeUp 0.5s ease 0.3s both; display: flex; flex-direction: column; gap: 20px; }
+.jw-project-images img { width: 100%; height: auto; display: block; }
 
-
-.jw-back { max-width: 1400px; margin: 0 auto; padding: 0 32px 48px; animation: fadeUp 0.5s ease 0.3s both; }
+.jw-back { max-width: 1400px; margin: 0 auto; padding: 0 32px 48px; animation: fadeUp 0.5s ease 0.4s both; }
 .jw-back a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; }
 .jw-back a:hover { color: #111; }
 
@@ -50,7 +52,7 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 .jw-foot-email:hover { color: #111; }
 
 @media (max-width: 900px) {
-  .jw-nav-wrap, .jw-project-header-inner, .jw-back, .jw-foot-row { padding-left: 24px; padding-right: 24px; }
+  .jw-nav-wrap, .jw-project-header-inner, .jw-project-desc, .jw-project-images, .jw-back, .jw-foot-row { padding-left: 24px; padding-right: 24px; }
   .jw-project-title { font-size: 52px; }
 }
 @media (max-width: 600px) {
@@ -94,7 +96,14 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
   </div>
 </div>
 
-<div class="jw-hero">
+<div class="jw-project-desc">
+  <p>As a sponsor of the Paris Paralympic Games, Citi commissioned a series of collectible pins to be distributed across event venues and internally to employees.</p>
+  <p>The concept tapped into the established culture of pin trading at global sporting events, with a focus on creating a highly collectible system that would encourage exchange. I developed a modular design approach in which each pin represented a different country, while also forming part of a larger whole.</p>
+  <p>Each individual design was created to stand alone, but when brought together, the pins connected seamlessly to form a unified circular composition. This system added an additional layer of meaning and collectibility, rewarding audiences who engaged with the full set.</p>
+  <p>The final outcome balanced clarity at a small scale with a strong overarching visual idea, creating a memorable and cohesive series that aligned with the spirit of the Games.</p>
+</div>
+
+<div class="jw-project-images">
   <img src="https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/paralympicpins_thumbnail.jpg" alt="Citi Paris Paralympic Pins">
 </div>
 

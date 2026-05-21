@@ -35,11 +35,13 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 .jw-project-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .jw-tag { padding: 6px 12px; border: 1px solid #666; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Inter', sans-serif; border-radius: 999px; }
 
-.jw-hero { background: #f5f5f5; }
-.jw-hero img { width: 100%; height: auto; display: block; max-height: 600px; object-fit: cover; }
+.jw-project-desc { max-width: 1400px; margin: 0 auto; padding: 48px 32px; animation: fadeUp 0.5s ease 0.2s both; }
+.jw-project-desc p { font-size: 16px; line-height: 1.75; color: #444; max-width: 680px; text-wrap: pretty; margin-bottom: 20px; }
+.jw-project-desc p:last-child { margin-bottom: 0; }
+.jw-project-images { max-width: 1400px; margin: 0 auto; padding: 0 32px 64px; animation: fadeUp 0.5s ease 0.3s both; display: flex; flex-direction: column; gap: 20px; }
+.jw-project-images img { width: 100%; height: auto; display: block; }
 
-
-.jw-back { max-width: 1400px; margin: 0 auto; padding: 0 32px 48px; animation: fadeUp 0.5s ease 0.3s both; }
+.jw-back { max-width: 1400px; margin: 0 auto; padding: 0 32px 48px; animation: fadeUp 0.5s ease 0.4s both; }
 .jw-back a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; }
 .jw-back a:hover { color: #111; }
 
@@ -50,7 +52,7 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 .jw-foot-email:hover { color: #111; }
 
 @media (max-width: 900px) {
-  .jw-nav-wrap, .jw-project-header-inner, .jw-back, .jw-foot-row { padding-left: 24px; padding-right: 24px; }
+  .jw-nav-wrap, .jw-project-header-inner, .jw-project-desc, .jw-project-images, .jw-back, .jw-foot-row { padding-left: 24px; padding-right: 24px; }
   .jw-project-title { font-size: 52px; }
 }
 @media (max-width: 600px) {
@@ -96,7 +98,14 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
   </div>
 </div>
 
-<div class="jw-hero">
+<div class="jw-project-desc">
+  <p>e-Education is a global charity initiative led by Citi, focused on improving access to education for children and young people worldwide. For this campaign, the objective was to evolve the visual identity into something cleaner, more contemporary, and reflective of its global impact.</p>
+  <p>A key challenge was the absence of a dedicated photoshoot, requiring the use of sourced imagery. I curated and art directed a cohesive photographic approach, carefully selecting and retouching each image to ensure consistency across tone, colour, and lighting. By enhancing greens and unifying key colour values, I established a visual system that felt connected despite the varied sources.</p>
+  <p>In close collaboration with a copywriter, we developed a series of headlines designed to work seamlessly with the imagery. Each headline was split across the composition, requiring the visuals themselves to support that structure — making image selection and retouching critical, not just for consistency, but to ensure each composition could naturally accommodate the typographic break, allowing copy and image to function as a single, unified idea.</p>
+  <p>The final outcome was a simple yet flexible visual language, where art direction and typography worked in tandem to communicate a cohesive global message with clarity.</p>
+</div>
+
+<div class="jw-project-images">
   <img src="https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/eforeducationthumbnail.jpg" alt="Citi e for education">
 </div>
 
