@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh West — COP26 — Would You Rather?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.jw-nav-outer { border-bottom: 1px solid #e8e8e8; background: #fff; position: sticky; top: 0; z-index: 20; animation: fadeIn 0.4s ease both; }
+.jw-nav-wrap { max-width: 1400px; margin: 0 auto; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; }
+.jw-nav-left, .jw-nav-right { display: flex; gap: 24px; }
+.jw-nav-wrap a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; font-family: 'Inter', sans-serif; }
+.jw-nav-wrap a:hover { color: #111; }
+.jw-nav-logo { display: flex; align-items: center; }
+.jw-nav-logo img { height: 28px; width: auto; display: block; }
+
+.jw-project-header { border-bottom: 1px solid #e8e8e8; animation: fadeUp 0.5s ease 0.1s both; }
+.jw-project-header-inner { max-width: 1400px; margin: 0 auto; padding: 56px 32px 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+.jw-project-client { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-bottom: 16px; }
+.jw-project-title { font-size: 72px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; color: #111; line-height: 1; }
+.jw-project-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.jw-tag { padding: 6px 12px; border: 1px solid #ddd; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Inter', sans-serif; border-radius: 999px; }
+
+.jw-project-desc { max-width: 1400px; margin: 0 auto; padding: 48px 32px; animation: fadeUp 0.5s ease 0.2s both; }
+.jw-project-desc p { font-size: 16px; line-height: 1.75; color: #444; max-width: 680px; }
+
+.jw-project-images { max-width: 1400px; margin: 0 auto; padding: 0 32px 64px; animation: fadeUp 0.5s ease 0.3s both; display: flex; flex-direction: column; gap: 20px; }
+.jw-project-images img { width: 100%; height: auto; display: block; }
+.jw-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.jw-img-grid img { width: 100%; height: auto; display: block; }
+
+.jw-back { max-width: 1400px; margin: 0 auto; padding: 0 32px 48px; animation: fadeUp 0.5s ease 0.4s both; }
+.jw-back a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; }
+.jw-back a:hover { color: #111; }
+
+.jw-foot-outer { border-top: 1px solid #e8e8e8; }
+.jw-foot-row { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; justify-content: space-between; align-items: center; }
+.jw-foot-copy { font-size: 10px; letter-spacing: 0.1em; color: #777; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+.jw-foot-email { font-size: 10px; letter-spacing: 0.1em; color: #777; text-decoration: none; text-transform: uppercase; font-family: 'Inter', sans-serif; transition: color 0.2s; }
+.jw-foot-email:hover { color: #111; }
+
+@media (max-width: 900px) {
+  .jw-nav-wrap, .jw-project-header-inner, .jw-project-desc, .jw-project-images, .jw-back, .jw-foot-row { padding-left: 24px; padding-right: 24px; }
+  .jw-project-title { font-size: 52px; }
+}
+@media (max-width: 600px) {
+  .jw-nav-wrap, .jw-project-header-inner, .jw-project-desc, .jw-project-images, .jw-back, .jw-foot-row { padding-left: 20px; padding-right: 20px; }
+  .jw-nav-left, .jw-nav-right { display: none; }
+  .jw-project-header-inner { padding: 32px 20px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .jw-project-title { font-size: 40px; }
+  .jw-project-tags { justify-content: flex-start; }
+  .jw-img-grid { grid-template-columns: 1fr; }
+  .jw-foot-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="jw-nav-outer">
+  <div class="jw-nav-wrap">
+    <div class="jw-nav-left">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+    </div>
+    <a href="../index.html" class="jw-nav-logo">
+      <img src="https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/logo.png" alt="Josh West">
+    </a>
+    <div class="jw-nav-right">
+      <a href="https://linkedin.com/in/josh-west-9459aba7" target="_blank">LinkedIn</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="jw-project-header">
+  <div class="jw-project-header-inner">
+    <div>
+      <div class="jw-project-client">COP26</div>
+      <h1 class="jw-project-title">Would You Rather?</h1>
+    </div>
+    <div class="jw-project-tags">
+      <span class="jw-tag">Campaign</span>
+      <span class="jw-tag">OOH</span>
+      <span class="jw-tag">Social</span>
+    </div>
+  </div>
+</div>
+
+<div class="jw-project-desc">
+  <p>The brief of this pitch was to catch the eye of politicians on their way to attend COP26. COP26 was heavily discussed amongst politicians and the public due to the sensitive topic of climate change. The end goal would be to use large advertising spaces situated along the routes into the COP26 conference to catch as much attention as possible. A tongue-in-cheek narrative coupled with a vivid palette, striking type and a unique character was employed to prompt political reflection and public conversation.</p>
+</div>
+
+<div class="jw-project-images">
+  <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/494ccf0c-5dc0-4e33-aa31-e90f96eeba47/1-min.png" alt="COP26 Would You Rather — 1">
+  <div class="jw-img-grid">
+    <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/b09efd7c-0433-476d-b13f-203a705c869b/2-min.png" alt="COP26 Would You Rather — 2">
+    <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/60efca3a-e33b-4762-add8-867d033a6dc8/3-min.png" alt="COP26 Would You Rather — 3">
+  </div>
+  <div class="jw-img-grid">
+    <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/58854ede-2734-41de-9eac-343ab90d14f3/4-min.png" alt="COP26 Would You Rather — 4">
+    <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/f4fcaa45-6c98-448b-90a7-ad3c7e10797a/5-min.png" alt="COP26 Would You Rather — 5">
+  </div>
+  <div class="jw-img-grid">
+    <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/690b218b-c326-428b-8314-9b0dc444ae59/6-min.png" alt="COP26 Would You Rather — 6">
+    <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/8ba34a6b-b261-4bad-b196-9ed7af2e6ca8/7-min.png" alt="COP26 Would You Rather — 7">
+  </div>
+  <div class="jw-img-grid">
+    <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/b63eb8aa-2b45-488b-861f-b68a0e8d666a/8-min.png" alt="COP26 Would You Rather — 8">
+    <img src="https://images.squarespace-cdn.com/content/v1/63e3d51b25510d29936977e0/1c94684b-996e-428c-ba91-3d21531fd6d0/9-min.png" alt="COP26 Would You Rather — 9">
+  </div>
+</div>
+
+<div class="jw-back">
+  <a href="../index.html">&#8592; Back to work</a>
+</div>
+
+<div class="jw-foot-outer">
+  <div class="jw-foot-row">
+    <div class="jw-foot-copy">&copy; 2026 Josh West</div>
+    <a href="mailto:josh.west.designer@gmail.com" class="jw-foot-email">josh.west.designer@gmail.com</a>
+  </div>
+</div>
+
+</body>
+</html>
