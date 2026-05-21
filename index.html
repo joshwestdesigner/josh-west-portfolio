@@ -11,6 +11,25 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.jw-nav-outer { animation: fadeIn 0.4s ease both; }
+.jw-page-header { animation: fadeUp 0.5s ease 0.1s both; }
+.jw-filters { animation: fadeUp 0.5s ease 0.2s both; }
+
+/* Tile stagger — applied via JS */
+.jw-tile {
+  opacity: 0;
+  animation: fadeUp 0.5s ease both;
+}
+
 .jw-nav-outer { border-bottom: 1px solid #e8e8e8; background: #fff; position: sticky; top: 0; z-index: 20; }
 .jw-nav-wrap { max-width: 1400px; margin: 0 auto; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; }
 .jw-nav-left, .jw-nav-right { display: flex; gap: 24px; }
@@ -39,11 +58,12 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
 .jw-tile.wide { grid-column: span 2; height: 280px; }
 .jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: cover; background-position: center; transform: scale(1.05); transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .jw-tile:hover .jw-tile-bg { transform: scale(1.1); }
-.jw-tile-green { position: absolute; inset: 0; background: #49B649; opacity: 0; transition: opacity 0.3s; z-index: 1; }
+.jw-tile-green { position: absolute; inset: 0; background: #49B649; opacity: 0; transition: opacity 0.35s ease; z-index: 1; }
 .jw-tile:hover .jw-tile-green { opacity: 1; }
-.jw-tile-vw { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 3; opacity: 0; transition: opacity 0.3s; }
-.jw-tile:hover .jw-tile-vw { opacity: 1; }
-.jw-view-label { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #000; font-weight: 700; border: 1px solid rgba(0,0,0,0.4); border-radius: 999px; padding: 6px 14px; font-family: 'Inter', sans-serif; }
+.jw-tile-vw { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 3; opacity: 0; transform: translateY(6px); transition: opacity 0.35s ease, transform 0.35s ease; gap: 6px; }
+.jw-tile:hover .jw-tile-vw { opacity: 1; transform: translateY(0); }
+.jw-hover-client { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.5); font-family: 'Inter', sans-serif; font-weight: 400; }
+.jw-hover-name { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #000; font-family: 'Inter', sans-serif; }
 .jw-tile-info { display: none; }
 
 .jw-foot-outer { border-top: 1px solid #e8e8e8; }
@@ -156,21 +176,23 @@ function jwBuildGrid(filter) {
   var isMobile = window.innerWidth <= 600;
   var useWide = filter === 'all' && !isMobile;
   var visible = filter === 'all' ? jwProjects : jwProjects.filter(function(p) { return p.cat.indexOf(filter) > -1; });
-  visible.forEach(function(p) {
+
+  visible.forEach(function(p, i) {
     var isWide = useWide && p.wide;
     var tile = document.createElement('a');
     tile.href = p.url;
     tile.className = 'jw-tile' + (isWide ? ' wide' : '');
+    tile.style.animationDelay = (0.3 + i * 0.08) + 's';
     tile.innerHTML =
       '<div class="jw-tile-bg" style="' + (p.img ? 'background-image:url(' + p.img + ');' : '') + '"></div>' +
       '<div class="jw-tile-green"></div>' +
-      '<div class="jw-tile-vw"><span class="jw-view-label">View work</span></div>' +
-      '<div class="jw-tile-info">' +
-        '<div class="jw-tile-client">' + p.client + '</div>' +
-        '<div class="jw-tile-name">' + p.name + '</div>' +
+      '<div class="jw-tile-vw">' +
+        '<div class="jw-hover-client">' + p.client + '</div>' +
+        '<div class="jw-hover-name">' + p.name + '</div>' +
       '</div>';
     grid.appendChild(tile);
   });
+
   var countEl = document.getElementById('jw-count');
   if (countEl) countEl.textContent = visible.length < 10 ? '0' + visible.length : '' + visible.length;
 }
