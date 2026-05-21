@@ -30,7 +30,7 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
   animation: fadeUp 0.5s ease both;
 }
 
-.jw-nav-outer { border-bottom: 1px solid #e8e8e8; background: #fff; position: sticky; top: 0; z-index: 20; }
+.jw-nav-outer { border-bottom: 1px solid #bbb; background: #fff; position: sticky; top: 0; z-index: 20; }
 .jw-nav-wrap { max-width: 1400px; margin: 0 auto; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; }
 .jw-nav-left, .jw-nav-right { display: flex; gap: 24px; }
 .jw-nav-wrap a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; font-family: 'Inter', sans-serif; }
@@ -38,17 +38,17 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 .jw-nav-logo { display: flex; align-items: center; }
 .jw-nav-logo img { height: 28px; width: auto; display: block; }
 
-.jw-page-header-border { border-bottom: 1px solid #e8e8e8; }
+.jw-page-header-border { border-bottom: 1px solid #bbb; }
 .jw-page-header { max-width: 1400px; margin: 0 auto; padding: 56px 32px 40px; display: flex; justify-content: space-between; align-items: flex-end; }
 .jw-page-title { font-size: 72px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; color: #111; line-height: 1; font-family: 'Inter', sans-serif; }
 .jw-page-meta p { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #777; margin-bottom: 8px; text-align: right; font-family: 'Inter', sans-serif; }
 .jw-page-count { font-size: 32px; font-weight: 800; color: #e0e0e0; letter-spacing: -0.02em; text-align: right; font-family: 'Inter', sans-serif; }
 
-.jw-filters-outer { border-bottom: 1px solid #e8e8e8; }
+.jw-filters-outer { border-bottom: 1px solid #bbb; }
 .jw-filters { max-width: 1400px; margin: 0 auto; display: flex; gap: 6px; padding: 16px 32px; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .jw-filters::-webkit-scrollbar { display: none; }
 .jw-filter-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-right: 6px; white-space: nowrap; font-family: 'Inter', sans-serif; }
-button.jw-chip { padding: 6px 12px; background-color: transparent; border: 1px solid #ddd; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 400; white-space: nowrap; flex-shrink: 0; border-radius: 999px; transition: border-color 0.2s, color 0.2s; }
+button.jw-chip { padding: 6px 12px; background-color: transparent; border: 1px solid #666; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 400; white-space: nowrap; flex-shrink: 0; border-radius: 999px; transition: border-color 0.2s, color 0.2s; }
 button.jw-chip:hover { border-color: #aaa; color: #333; }
 
 .jw-work-grid { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
@@ -66,7 +66,7 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
 .jw-hover-name { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #000; font-family: 'Inter', sans-serif; }
 .jw-tile-info { display: none; }
 
-.jw-foot-outer { border-top: 1px solid #e8e8e8; }
+.jw-foot-outer { border-top: 1px solid #bbb; }
 .jw-foot-row { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; justify-content: space-between; align-items: center; }
 .jw-foot-copy { font-size: 10px; letter-spacing: 0.1em; color: #777; text-transform: uppercase; font-family: 'Inter', sans-serif; }
 .jw-foot-email { font-size: 10px; letter-spacing: 0.1em; color: #777; text-decoration: none; text-transform: uppercase; font-family: 'Inter', sans-serif; transition: color 0.2s; }
@@ -160,7 +160,7 @@ var jwProjects = [
 function jwSetActive(chip) {
   document.querySelectorAll('.jw-chip').forEach(function(c) {
     c.style.backgroundColor = 'transparent';
-    c.style.borderColor = '#ddd';
+    c.style.borderColor = '#666';
     c.style.color = '#666';
     c.style.fontWeight = '400';
   });
