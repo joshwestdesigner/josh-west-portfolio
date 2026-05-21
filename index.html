@@ -37,17 +37,14 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
 
 .jw-tile { position: relative; overflow: hidden; background: #d9d9d9; cursor: pointer; height: 320px; display: block; text-decoration: none; }
 .jw-tile.wide { grid-column: span 2; height: 280px; }
-.jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: 120%; background-position: center; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.jw-tile-bg { position: absolute; inset: 0; background: #d9d9d9; background-size: 105%; background-position: center; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .jw-tile:hover .jw-tile-bg { transform: scale(1.04); }
 .jw-tile-green { position: absolute; inset: 0; background: #49B649; opacity: 0; transition: opacity 0.3s; z-index: 1; }
 .jw-tile:hover .jw-tile-green { opacity: 1; }
 .jw-tile-vw { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 3; opacity: 0; transition: opacity 0.3s; }
 .jw-tile:hover .jw-tile-vw { opacity: 1; }
 .jw-view-label { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #000; font-weight: 700; border: 1px solid rgba(0,0,0,0.4); border-radius: 999px; padding: 6px 14px; font-family: 'Inter', sans-serif; }
-.jw-tile-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 20px; z-index: 2; transition: opacity 0.3s; }
-.jw-tile:hover .jw-tile-info { opacity: 0; }
-.jw-tile-client { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.4); margin-bottom: 3px; font-family: 'Inter', sans-serif; }
-.jw-tile-name { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #111; font-family: 'Inter', sans-serif; }
+.jw-tile-info { display: none; }
 
 .jw-foot-outer { border-top: 1px solid #e8e8e8; }
 .jw-foot-row { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; justify-content: space-between; align-items: center; }
