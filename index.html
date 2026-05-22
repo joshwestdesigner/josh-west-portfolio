@@ -88,8 +88,9 @@ button.jw-chip:hover { border-color: #aaa; color: #333; }
   .jw-page-meta p, .jw-page-count { text-align: left; }
   .jw-page-count { font-size: 24px; }
   .jw-dyn-grid { grid-template-columns: 1fr; gap: 12px; }
-  .jw-tile { height: 240px; }
+  .jw-tile { height: 240px; -webkit-transform: none; transform: none; }
   .jw-tile.wide { grid-column: span 1; height: 200px; }
+  .jw-tile-bg { transform: none; will-change: auto; }
   .jw-foot-row { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 </style>
