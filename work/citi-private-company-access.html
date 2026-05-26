@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh West — Citi — Private Company Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Nav */
+.jw-nav-outer { border-bottom: 1px solid #bbb; background: #fff; position: sticky; top: 0; z-index: 20; animation: fadeIn 0.4s ease both; }
+.jw-nav-wrap { max-width: 1400px; margin: 0 auto; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; }
+.jw-nav-left, .jw-nav-right { display: flex; gap: 24px; }
+.jw-nav-wrap a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; font-family: 'Inter', sans-serif; }
+.jw-nav-wrap a:hover { color: #111; }
+.jw-nav-logo { display: flex; align-items: center; }
+.jw-nav-logo img { height: 28px; width: auto; display: block; }
+
+/* Project header */
+.jw-project-header { border-bottom: 1px solid #bbb; animation: fadeUp 0.5s ease 0.1s both; }
+.jw-project-header-inner { max-width: 1400px; margin: 0 auto; padding: 56px 32px 40px; display: flex; justify-content: space-between; align-items: last baseline; }
+.jw-project-client { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-bottom: 16px; }
+.jw-project-title { font-size: 72px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; color: #111; line-height: 1; }
+.jw-project-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.jw-tag { padding: 6px 12px; border: 1px solid #666; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Inter', sans-serif; border-radius: 999px; }
+
+/* Intro */
+.jw-project-desc { max-width: 1400px; margin: 0 auto; padding: 48px 32px; animation: fadeUp 0.5s ease 0.2s both; }
+.jw-project-desc p { font-size: 16px; line-height: 1.75; color: #444; max-width: 680px; text-wrap: pretty; margin-bottom: 20px; }
+.jw-project-desc p:last-child { margin-bottom: 0; }
+
+/* Routes overview strip */
+.jw-routes-overview { animation: fadeUp 0.5s ease 0.3s both; border-top: 1px solid #bbb; border-bottom: 1px solid #bbb; }
+.jw-routes-overview-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+.jw-route-thumb { position: relative; height: 340px; overflow: hidden; border-right: 1px solid #bbb; }
+.jw-route-thumb:last-child { border-right: none; }
+.jw-route-thumb-img { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.05); transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.jw-route-thumb:hover .jw-route-thumb-img { transform: scale(1.1); }
+.jw-route-thumb-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%); }
+.jw-route-thumb-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 28px 32px; }
+.jw-route-thumb-num { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+.jw-route-thumb-name { font-size: 26px; font-weight: 800; color: #fff; line-height: 1.05; letter-spacing: -0.02em; }
+
+/* Route sections */
+.jw-routes-body { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+.jw-route-section { padding: 72px 0; border-bottom: 1px solid #bbb; animation: fadeUp 0.5s ease 0.35s both; }
+.jw-route-section:last-child { border-bottom: none; }
+
+.jw-route-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-bottom: 48px; }
+.jw-route-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+.jw-route-name { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: #111; }
+.jw-route-rationale { font-size: 16px; line-height: 1.75; color: #444; padding-top: 8px; text-wrap: pretty; }
+
+/* Route images */
+.jw-route-images { display: flex; flex-direction: column; gap: 12px; }
+.jw-route-images img { width: 100%; height: auto; display: block; }
+.jw-route-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.jw-route-img-grid img { width: 100%; height: auto; display: block; }
+.jw-collage-wrap { overflow: hidden; line-height: 0; }
+.jw-collage-wrap img { display: block; width: calc(100% + 46px); margin: -19px -23px; }
+
+/* Back / footer */
+.jw-back { max-width: 1400px; margin: 0 auto; padding: 48px 32px; }
+.jw-back a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; }
+.jw-back a:hover { color: #111; }
+.jw-foot-outer { border-top: 1px solid #bbb; }
+.jw-foot-row { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; justify-content: space-between; align-items: center; }
+.jw-foot-copy { font-size: 10px; letter-spacing: 0.1em; color: #777; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+.jw-foot-email { font-size: 10px; letter-spacing: 0.1em; color: #777; text-decoration: none; text-transform: uppercase; font-family: 'Inter', sans-serif; transition: color 0.2s; }
+.jw-foot-email:hover { color: #111; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .jw-nav-wrap, .jw-project-header-inner, .jw-project-desc, .jw-routes-body, .jw-back, .jw-foot-row { padding-left: 24px; padding-right: 24px; }
+  .jw-project-title { font-size: 52px; }
+  .jw-route-name { font-size: 40px; }
+  .jw-route-header { grid-template-columns: 1fr; gap: 20px; }
+  .jw-routes-overview-grid { grid-template-columns: 1fr; }
+  .jw-route-thumb { height: 260px; border-right: none; border-bottom: 1px solid #bbb; }
+  .jw-route-thumb:last-child { border-bottom: none; }
+}
+@media (max-width: 600px) {
+  .jw-nav-wrap, .jw-project-header-inner, .jw-project-desc, .jw-routes-body, .jw-back, .jw-foot-row { padding-left: 20px; padding-right: 20px; }
+  .jw-nav-left { display: none; }
+  .jw-project-header-inner { padding: 32px 20px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .jw-project-title { font-size: 36px; }
+  .jw-project-tags { justify-content: flex-start; }
+  .jw-route-name { font-size: 32px; }
+  .jw-route-img-grid { grid-template-columns: 1fr; }
+  .jw-foot-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="jw-nav-outer">
+  <div class="jw-nav-wrap">
+    <div class="jw-nav-left">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+    </div>
+    <a href="../index.html" class="jw-nav-logo">
+      <img src="https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/logo.png" alt="Josh West">
+    </a>
+    <div class="jw-nav-right">
+      <a href="https://linkedin.com/in/josh-west-9459aba7" target="_blank">LinkedIn</a>
+      <a href="mailto:josh.west.designer@gmail.com">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="jw-project-header">
+  <div class="jw-project-header-inner">
+    <div>
+      <div class="jw-project-client">Citi</div>
+      <h1 class="jw-project-title">Private Company Access</h1>
+    </div>
+    <div class="jw-project-tags">
+      <span class="jw-tag">Campaign</span>
+      <span class="jw-tag">Branding</span>
+      <span class="jw-tag">OOH</span>
+    </div>
+  </div>
+</div>
+
+<div class="jw-project-desc">
+  <p>Private Company Access is a Citi initiative that facilitates high-value connections between investors and businesses through curated events. The brief was to develop a campaign identity that could flex across OOH advertising, event environments, presentations and print — giving the programme a distinct visual personality that felt premium, contemporary and true to its purpose.</p>
+  <p>Three creative routes were developed, each rooted in a different conceptual idea and visual language. For routes one and two, I used Midjourney to rapidly explore and develop AI-generated hero imagery, iterating on visual directions before refining the strongest outputs into campaign applications. Below is an overview of each route and the thinking behind it.</p>
+</div>
+
+<!-- Route sections -->
+<div class="jw-routes-body">
+
+  <!-- Route 1 -->
+  <div class="jw-route-section">
+    <div class="jw-route-header">
+      <div>
+        <div class="jw-route-label">Route 01</div>
+        <div class="jw-route-name">Flow together</div>
+      </div>
+      <p class="jw-route-rationale">The right partnerships just flow. It's when everything from conversations to decisions feel as though they're made in synchronicity. This route uses iridescent, liquid chrome 3D forms to visualise that sense of fluid momentum — the feeling of two forces moving as one. I used Midjourney to develop and iterate on the hero imagery, exploring the visual language of flow and synchronicity through AI generation before selecting and refining the strongest outputs. The abstract imagery is dynamic yet refined, lending the campaign energy without sacrificing the premium positioning the brand requires. Key copy leans into the metaphor: <em>Be in full flow. Together.</em></p>
+    </div>
+    <div class="jw-route-images">
+      <div class="jw-collage-wrap"><img src="../pca-screenshots/page_2_screenshot.png" alt="Route 1 — Flow together visual language"></div>
+      <img src="../pca-screenshots/page_4_screenshot.png" alt="Route 1 — Event screen in situ">
+      <img src="../pca-screenshots/page_3_screenshot.png" alt="Route 1 — OOH billboard application">
+      <div class="jw-route-img-grid">
+        <img src="../pca-screenshots/page_5_screenshot.png" alt="Route 1 — Event badge design">
+        <img src="../pca-screenshots/page_6_screenshot.png" alt="Route 1 — Meeting room screen application">
+      </div>
+    </div>
+  </div>
+
+  <!-- Route 2 -->
+  <div class="jw-route-section">
+    <div class="jw-route-header">
+      <div>
+        <div class="jw-route-label">Route 02</div>
+        <div class="jw-route-name">Get closer</div>
+      </div>
+      <p class="jw-route-rationale">Close partnerships are charged with potential that can deliver incredible results. This route visualises proximity and depth through abstract spherical forms — glowing orbs that suggest two bodies drawing towards each other, charged with energy and possibility. As with route one, Midjourney was used to generate and iterate on the hero imagery, rapidly exploring different expressions of closeness and connection before landing on the glowing, gradient-rich aesthetic. The palette of pink, purple and blue creates a sense of warmth and ambition. Copy drives the closeness metaphor throughout: <em>Grow closer. Growing a closer network.</em></p>
+    </div>
+    <div class="jw-route-images">
+      <div class="jw-collage-wrap"><img src="../pca-screenshots/page_8_screenshot.png" alt="Route 2 — Get closer visual language"></div>
+      <img src="../pca-screenshots/page_10_screenshot.png" alt="Route 2 — Event screen in situ">
+      <img src="../pca-screenshots/page_9_screenshot.png" alt="Route 2 — OOH billboard application">
+      <div class="jw-route-img-grid">
+        <img src="../pca-screenshots/page_11_screenshot.png" alt="Route 2 — Event badge design">
+        <img src="../pca-screenshots/page_12_screenshot.png" alt="Route 2 — Meeting room screen application">
+      </div>
+    </div>
+  </div>
+
+  <!-- Route 3 -->
+  <div class="jw-route-section">
+    <div class="jw-route-header">
+      <div>
+        <div class="jw-route-label">Route 03</div>
+        <div class="jw-route-name">Connect the dots</div>
+      </div>
+      <p class="jw-route-rationale">In any industry, spotting opportunity comes from connecting the dots in new ways. This route takes a bolder, more graphic direction — using bold interlocking blob shapes that suggest two things finding their natural fit. The flat, high-contrast palette of navy, blue and white makes it highly distinctive at scale, standing apart from the category while retaining Citi's authority. Copy reflects the concept directly: <em>Connecting out-thinkers. Connecting vision to venture capital.</em></p>
+    </div>
+    <div class="jw-route-images">
+      <div class="jw-collage-wrap"><img src="../pca-screenshots/page_14_screenshot.png" alt="Route 3 — Connect the dots visual language"></div>
+      <img src="../pca-screenshots/page_16_screenshot.png" alt="Route 3 — Event screen in situ">
+      <img src="../pca-screenshots/page_15_screenshot.png" alt="Route 3 — OOH billboard application">
+      <div class="jw-route-img-grid">
+        <img src="../pca-screenshots/page_17_screenshot.png" alt="Route 3 — Event badge design">
+        <img src="../pca-screenshots/page_18_screenshot.png" alt="Route 3 — Meeting room screen application">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="jw-back">
+  <a href="../index.html">&#8592; Back to work</a>
+</div>
+
+<div class="jw-foot-outer">
+  <div class="jw-foot-row">
+    <div class="jw-foot-copy">&copy; 2026 Josh West</div>
+    <a href="mailto:josh.west.designer@gmail.com" class="jw-foot-email">josh.west.designer@gmail.com</a>
+  </div>
+</div>
+
+</body>
+</html>

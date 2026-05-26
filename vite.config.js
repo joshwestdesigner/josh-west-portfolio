@@ -15,6 +15,8 @@ export default defineConfig({
         adidasTeamWear: 'work/adidas-team-wear.html',
         cop26WouldYouRather: 'work/cop26-would-you-rather.html',
         cinchEddieStorbart: 'work/cinch-eddie-stobart.html',
+        citiPrivateCompanyAccess: 'work/citi-private-company-access.html',
+        citiSparcCreativeIdentity: 'work/citi-sparc-creative-identity.html',
       }
     }
   }

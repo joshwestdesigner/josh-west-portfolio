@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh West — Citi — Sparc Creative Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Nav */
+.jw-nav-outer { border-bottom: 1px solid #bbb; background: #fff; position: sticky; top: 0; z-index: 20; animation: fadeIn 0.4s ease both; }
+.jw-nav-wrap { max-width: 1400px; margin: 0 auto; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; }
+.jw-nav-left, .jw-nav-right { display: flex; gap: 24px; }
+.jw-nav-wrap a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; font-family: 'Inter', sans-serif; }
+.jw-nav-wrap a:hover { color: #111; }
+.jw-nav-logo { display: flex; align-items: center; }
+.jw-nav-logo img { height: 28px; width: auto; display: block; }
+
+/* Project header */
+.jw-project-header { border-bottom: 1px solid #bbb; animation: fadeUp 0.5s ease 0.1s both; }
+.jw-project-header-inner { max-width: 1400px; margin: 0 auto; padding: 56px 32px 40px; display: flex; justify-content: space-between; align-items: last baseline; }
+.jw-project-client { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-bottom: 16px; }
+.jw-project-title { font-size: 72px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; color: #111; line-height: 1; }
+.jw-project-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.jw-tag { padding: 6px 12px; border: 1px solid #666; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Inter', sans-serif; border-radius: 999px; }
+
+/* Intro */
+.jw-project-desc { max-width: 1400px; margin: 0 auto; padding: 48px 32px; animation: fadeUp 0.5s ease 0.2s both; }
+.jw-project-desc p { font-size: 16px; line-height: 1.75; color: #444; max-width: 680px; text-wrap: pretty; margin-bottom: 20px; }
+.jw-project-desc p:last-child { margin-bottom: 0; }
+
+/* Chapter sections */
+.jw-chapters-body { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+.jw-chapter-section { padding: 72px 0; border-top: 1px solid #bbb; animation: fadeUp 0.5s ease 0.3s both; }
+
+.jw-chapter-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-bottom: 48px; }
+.jw-chapter-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+.jw-chapter-name { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: #111; }
+.jw-chapter-rationale { font-size: 16px; line-height: 1.75; color: #444; padding-top: 8px; text-wrap: pretty; }
+
+/* Chapter images */
+.jw-chapter-images { display: flex; flex-direction: column; gap: 12px; }
+.jw-chapter-images img { width: 100%; height: auto; display: block; }
+.jw-chapter-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.jw-chapter-img-grid img { width: 100%; height: auto; display: block; }
+
+/* Back / footer */
+.jw-back { max-width: 1400px; margin: 0 auto; padding: 48px 32px; }
+.jw-back a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; }
+.jw-back a:hover { color: #111; }
+.jw-foot-outer { border-top: 1px solid #bbb; }
+.jw-foot-row { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; justify-content: space-between; align-items: center; }
+.jw-foot-copy { font-size: 10px; letter-spacing: 0.1em; color: #777; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+.jw-foot-email { font-size: 10px; letter-spacing: 0.1em; color: #777; text-decoration: none; text-transform: uppercase; font-family: 'Inter', sans-serif; transition: color 0.2s; }
+.jw-foot-email:hover { color: #111; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .jw-nav-wrap, .jw-project-header-inner, .jw-project-desc, .jw-chapters-body, .jw-back, .jw-foot-row { padding-left: 24px; padding-right: 24px; }
+  .jw-project-title { font-size: 52px; }
+  .jw-chapter-name { font-size: 40px; }
+  .jw-chapter-header { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 600px) {
+  .jw-nav-wrap, .jw-project-header-inner, .jw-project-desc, .jw-chapters-body, .jw-back, .jw-foot-row { padding-left: 20px; padding-right: 20px; }
+  .jw-nav-left { display: none; }
+  .jw-project-header-inner { padding: 32px 20px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .jw-project-title { font-size: 36px; }
+  .jw-project-tags { justify-content: flex-start; }
+  .jw-chapter-name { font-size: 32px; }
+  .jw-chapter-img-grid { grid-template-columns: 1fr; }
+  .jw-foot-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="jw-nav-outer">
+  <div class="jw-nav-wrap">
+    <div class="jw-nav-left">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+    </div>
+    <a href="../index.html" class="jw-nav-logo">
+      <img src="https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/logo.png" alt="Josh West">
+    </a>
+    <div class="jw-nav-right">
+      <a href="https://linkedin.com/in/josh-west-9459aba7" target="_blank">LinkedIn</a>
+      <a href="mailto:josh.west.designer@gmail.com">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="jw-project-header">
+  <div class="jw-project-header-inner">
+    <div>
+      <div class="jw-project-client">Citi</div>
+      <h1 class="jw-project-title">Sparc Creative Identity</h1>
+    </div>
+    <div class="jw-project-tags">
+      <span class="jw-tag">Branding</span>
+      <span class="jw-tag">Identity</span>
+      <span class="jw-tag">Campaign</span>
+    </div>
+  </div>
+</div>
+
+<div class="jw-project-desc">
+  <p>The brief was to develop a brand identity for <em>Sparc</em> — a proposed name for Citi's in-house creative team, a full-service agency that would bring creative and production capability inside one of the world's largest banks. This is the concept deck exploring what that identity could look, feel and sound like.</p>
+  <p>The name held the creative platform. <em>Sparc</em> fuses the energy and optimism of a spark with Citi's iconic arc, representing the power of creative thinking in a corporate world. Every element of the visual identity was built outward from that central idea — from the heat-charged colour palette to the typographic treatment that puts the name in perpetual motion.</p>
+</div>
+
+<div class="jw-chapters-body">
+
+  <!-- Chapter 1 -->
+  <div class="jw-chapter-section">
+    <div class="jw-chapter-header">
+      <div>
+        <div class="jw-chapter-label">Chapter 01</div>
+        <div class="jw-chapter-name">What's in a name?</div>
+      </div>
+      <p class="jw-chapter-rationale">The naming brief required something that could work at multiple levels — creative and energetic without abandoning the authority of the master brand. <em>Sparc</em> is a found word within the Citi universe, where the team's energy and potential meets Citi's arc to ignite something new. The italic logotype reinforces that sense of motion and momentum from the very first letterform.</p>
+    </div>
+    <div class="jw-chapter-images">
+      <img src="../sparc-screenshots/page_3_screenshot.png" alt="Sparc — logo reveal">
+      <img src="../sparc-screenshots/page_4_screenshot.png" alt="Sparc — naming rationale and brand lockup">
+    </div>
+  </div>
+
+  <!-- Chapter 2 -->
+  <div class="jw-chapter-section">
+    <div class="jw-chapter-header">
+      <div>
+        <div class="jw-chapter-label">Chapter 02</div>
+        <div class="jw-chapter-name">Visualising Sparc</div>
+      </div>
+      <p class="jw-chapter-rationale">The visual system is built on three interlocking elements. A palette of hot, energetic tones — Citi Red, Orange, Magenta and Ink Blue — gives the brand heat and immediacy, drawn directly from Citi's existing colour architecture but pushed to their most vivid expression. Gradients that always radiate outward from white create the impression of combustion and release, referencing the spark metaphor at every turn. Typography uses Citi Sans Display Bold Italic throughout, the italic treatment making the Sparc name feel as though it's perpetually in motion.</p>
+    </div>
+    <div class="jw-chapter-images">
+      <img src="../sparc-screenshots/page_6_screenshot.png" alt="Sparc — colour palette">
+      <div class="jw-chapter-img-grid">
+        <img src="../sparc-screenshots/page_7_screenshot.png" alt="Sparc — gradient system">
+        <img src="../sparc-screenshots/page_8_screenshot.png" alt="Sparc — imagery and texture treatment">
+      </div>
+      <img src="../sparc-screenshots/page_9_screenshot.png" alt="Sparc — typography system">
+    </div>
+  </div>
+
+  <!-- Chapter 3 -->
+  <div class="jw-chapter-section">
+    <div class="jw-chapter-header">
+      <div>
+        <div class="jw-chapter-label">Chapter 03</div>
+        <div class="jw-chapter-name">Bringing it together</div>
+      </div>
+      <p class="jw-chapter-rationale">The concept deck demonstrates how the brand would flex across applications. Campaign headlines pair the rational language of finance with the creative ambition of the proposed team — reframing what an in-house agency could mean inside a global bank. Portrait-format executions bring the three proposed brand values to life: <em>Integrated and imaginative. Expert and human. Unexpected but effective.</em> Each application uses the gradient and colour system to dial up energy while keeping the brand firmly anchored in the Citi world.</p>
+    </div>
+    <div class="jw-chapter-images">
+      <img src="../sparc-screenshots/page_11_screenshot.png" alt="Sparc — 'We know transactions but we think transformation'">
+      <img src="../sparc-screenshots/page_12_screenshot.png" alt="Sparc — brand values portrait cards, dark">
+      <div class="jw-chapter-img-grid">
+        <img src="../sparc-screenshots/page_13_screenshot.png" alt="Sparc — 'We get cross-border but we work cross-platform'">
+        <img src="../sparc-screenshots/page_14_screenshot.png" alt="Sparc — Expert and human, portrait application">
+      </div>
+      <img src="../sparc-screenshots/page_15_screenshot.png" alt="Sparc — brand values portrait cards, light">
+    </div>
+  </div>
+
+</div>
+
+<div class="jw-back">
+  <a href="../index.html">&#8592; Back to work</a>
+</div>
+
+<div class="jw-foot-outer">
+  <div class="jw-foot-row">
+    <div class="jw-foot-copy">&copy; 2026 Josh West</div>
+    <a href="mailto:josh.west.designer@gmail.com" class="jw-foot-email">josh.west.designer@gmail.com</a>
+  </div>
+</div>
+
+</body>
+</html>
