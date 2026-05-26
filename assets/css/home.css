@@ -137,10 +137,6 @@ button.jw-chip:hover {
   transform: translateZ(0);
 }
 
-.jw-tile:hover {
-  border-radius: 12px;
-}
-
 .jw-tile.wide {
   grid-column: span 2;
   height: 280px;
@@ -159,10 +155,6 @@ button.jw-chip:hover {
   will-change: transform;
 }
 
-.jw-tile:hover .jw-tile-bg {
-  transform: scale(1.1);
-}
-
 .jw-tile-green {
   position: absolute;
   inset: 0;
@@ -170,10 +162,6 @@ button.jw-chip:hover {
   opacity: 0;
   transition: opacity 0.15s ease;
   z-index: 1;
-}
-
-.jw-tile:hover .jw-tile-green {
-  opacity: 1;
 }
 
 .jw-tile-vw {
@@ -190,9 +178,23 @@ button.jw-chip:hover {
   gap: 6px;
 }
 
-.jw-tile:hover .jw-tile-vw {
-  opacity: 1;
-  transform: translateY(0);
+@media (hover: hover) {
+  .jw-tile:hover {
+    border-radius: 12px;
+  }
+
+  .jw-tile:hover .jw-tile-bg {
+    transform: scale(1.1);
+  }
+
+  .jw-tile:hover .jw-tile-green {
+    opacity: 1;
+  }
+
+  .jw-tile:hover .jw-tile-vw {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .jw-hover-client {
