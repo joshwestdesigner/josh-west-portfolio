@@ -1,14 +1,14 @@
 var jwProjects = [
-  { client:'Citi', name:'e for education', cat:['campaign','ooh'], wide:true, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/eforeducationthumbnail.jpg', url:'work/citi-e-for-education.html' },
-  { client:'Citi', name:'Private Company Access', cat:['campaign','branding','ooh'], wide:false, img:'pca-screenshots/pca-thumbnail.png', url:'work/citi-private-company-access.html' },
-  { client:'Citi', name:'Paris Paralympic pins', cat:['campaign','ooh'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/paralympicpins_thumbnail.jpg', url:'work/paris-paralympic-pins.html' },
-  { client:'Citi', name:'Sparc Creative Identity', cat:['branding'], wide:true, img:'sparc-screenshots/page_3_screenshot.png', url:'work/citi-sparc-creative-identity.html' },
-  { client:'Adidas', name:'Heat RDY', cat:['campaign','social'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/heat-rdy-beckham-kv_cropped2.png', url:'work/adidas-heat-rdy.html' },
-  { client:'Starbucks', name:'Phantom frapp', cat:['campaign','social','motion'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/phantomfrapp_thumbnail.jpeg', url:'work/starbucks-phantom-frapp.html' },
-  { client:'Starbucks', name:'Forget me not', cat:['campaign','ooh'], wide:true, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/forgetmenot_thumbnail.jpeg', url:'work/starbucks-forget-me-not.html' },
-  { client:'Adidas', name:'Team wear', cat:['campaign','ooh'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/teamwear-team.png', url:'work/adidas-team-wear.html' },
-  { client:'COP26', name:"Would you rather?", cat:['campaign','branding','ooh'], wide:false, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/main/images/cop26-1.png', url:'work/cop26-would-you-rather.html' },
-  { client:'Original Source', name:'Pack more in', cat:['campaign','motion'], wide:true, img:'https://raw.githubusercontent.com/joshwestdesigner/josh-west-portfolio/refs/heads/Images---e-for-education/originalsource_thumbnail.jpg', url:'work/original-source-pack-more-in.html' },
+  { client:'Citi', name:'e for education', cat:['campaign','ooh'], wide:true, img:'eforeducationthumbnail.webp', url:'work/citi-e-for-education.html' },
+  { client:'Citi', name:'Private Company Access', cat:['campaign','branding','ooh'], wide:false, img:'pca-screenshots/pca-thumbnail.webp', url:'work/citi-private-company-access.html' },
+  { client:'Citi', name:'Paris Paralympic pins', cat:['campaign','ooh'], wide:false, img:'paralympicpins_thumbnail.webp', url:'work/paris-paralympic-pins.html' },
+  { client:'Citi', name:'Sparc Creative Identity', cat:['branding'], wide:true, img:'sparc-screenshots/page_3_screenshot.webp', url:'work/citi-sparc-creative-identity.html' },
+  { client:'Adidas', name:'Heat RDY', cat:['campaign','social'], wide:false, img:'images/heat-rdy-beckham-kv_cropped2.webp', url:'work/adidas-heat-rdy.html' },
+  { client:'Starbucks', name:'Phantom frapp', cat:['campaign','social','motion'], wide:false, img:'phantomfrapp_thumbnail.webp', url:'work/starbucks-phantom-frapp.html' },
+  { client:'Starbucks', name:'Forget me not', cat:['campaign','ooh'], wide:true, img:'forgetmenot_thumbnail.webp', url:'work/starbucks-forget-me-not.html' },
+  { client:'Adidas', name:'Team wear', cat:['campaign','ooh'], wide:false, img:'images/teamwear-team.webp', url:'work/adidas-team-wear.html' },
+  { client:'COP26', name:"Would you rather?", cat:['campaign','branding','ooh'], wide:false, img:'images/cop26-1.webp', url:'work/cop26-would-you-rather.html' },
+  { client:'Original Source', name:'Pack more in', cat:['campaign','motion'], wide:true, img:'originalsource_thumbnail.webp', url:'work/original-source-pack-more-in.html' },
 ];
 
 function jwSetActive(chip) {
