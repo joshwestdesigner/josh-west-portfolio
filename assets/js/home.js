@@ -14,7 +14,7 @@ var jwProjects = [
 function jwSetActive(chip) {
   document.querySelectorAll('.jw-chip').forEach(function(c) {
     c.style.backgroundColor = 'transparent';
-    c.style.borderColor = '#666';
+    c.style.borderColor = '#bbb';
     c.style.color = '#666';
     c.style.fontWeight = '400';
   });
