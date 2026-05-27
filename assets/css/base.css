@@ -41,6 +41,11 @@ body {
 .jw-nav-right {
   display: flex;
   gap: 24px;
+  flex: 1;
+}
+
+.jw-nav-right {
+  justify-content: flex-end;
 }
 
 .jw-nav-wrap a {
