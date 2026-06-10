@@ -9,7 +9,7 @@
   --jw-images-padding: 0 32px 64px;
   --jw-images-gap: 20px;
   --jw-copy-text-wrap: pretty;
-  --jw-paragraph-spacing: 0;
+  --jw-paragraph-spacing: 20px;
   --jw-grid-mobile-columns: 1fr 1fr;
 }
 
