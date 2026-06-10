@@ -283,7 +283,7 @@ button.jw-chip:hover {
   }
 
   .jw-tile-bg {
-    transform: none;
+    transform: scale(1.05);
     will-change: auto;
   }
 }
