@@ -132,10 +132,6 @@ body {
     background: #111;
   }
 
-  .jw-nav-logo img {
-    filter: brightness(0) invert(1);
-  }
-
   .jw-nav-wrap a:hover,
   .jw-foot-email:hover {
     color: #f0f0f0;
