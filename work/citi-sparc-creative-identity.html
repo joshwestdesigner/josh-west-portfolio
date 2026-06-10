@@ -92,6 +92,27 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
   .jw-chapter-img-grid { grid-template-columns: 1fr; }
   .jw-foot-row { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+@media (prefers-color-scheme: dark) {
+  body { background: #111; color: #f0f0f0; }
+  .jw-nav-outer { background: #111; border-color: #333; }
+  .jw-nav-logo img { filter: brightness(0) invert(1); }
+  .jw-nav-wrap a { color: #888; }
+  .jw-nav-wrap a:hover { color: #f0f0f0; }
+  .jw-project-header { border-color: #333; }
+  .jw-project-client { color: #666; }
+  .jw-project-title { color: #f0f0f0; }
+  .jw-tag { border-color: #333; color: #888; }
+  .jw-project-desc p { color: #aaa; }
+  .jw-chapter-section { border-color: #333; }
+  .jw-chapter-label { color: #666; }
+  .jw-chapter-name { color: #f0f0f0; }
+  .jw-chapter-rationale { color: #aaa; }
+  .jw-back a { color: #666; }
+  .jw-back a:hover { color: #f0f0f0; }
+  .jw-foot-outer { border-color: #333; }
+  .jw-foot-copy, .jw-foot-email { color: #666; }
+  .jw-foot-email:hover { color: #f0f0f0; }
+}
 </style>
 </head>
 <body>

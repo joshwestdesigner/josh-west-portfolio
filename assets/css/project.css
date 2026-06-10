@@ -206,3 +206,30 @@
     grid-template-columns: var(--jw-grid-mobile-columns, 1fr);
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .jw-project-page {
+    --jw-line-color: #333;
+    --jw-nav-link-color: #888;
+    --jw-footer-color: #666;
+    --jw-client-color: #666;
+    --jw-tag-border-color: #333;
+    --jw-tag-color: #888;
+  }
+
+  .jw-project-title {
+    color: #f0f0f0;
+  }
+
+  .jw-project-desc p {
+    color: #aaa;
+  }
+
+  .jw-back a {
+    color: #666;
+  }
+
+  .jw-back a:hover {
+    color: #f0f0f0;
+  }
+}

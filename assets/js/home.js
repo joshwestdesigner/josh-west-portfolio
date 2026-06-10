@@ -14,13 +14,13 @@ var jwProjects = [
 function jwSetActive(chip) {
   document.querySelectorAll('.jw-chip').forEach(function(c) {
     c.style.backgroundColor = 'transparent';
-    c.style.borderColor = '#bbb';
-    c.style.color = '#666';
+    c.style.borderColor = '#aaa';
+    c.style.color = '#aaa';
     c.style.fontWeight = '400';
   });
   chip.style.backgroundColor = '#49B649';
   chip.style.borderColor = '#49B649';
-  chip.style.color = '#000';
+  chip.style.color = '#111';
   chip.style.fontWeight = '700';
 }
 

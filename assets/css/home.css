@@ -88,8 +88,8 @@
 button.jw-chip {
   padding: 6px 12px;
   background-color: transparent;
-  border: 1px solid #bbb;
-  color: #666;
+  border: 1px solid #aaa;
+  color: #aaa;
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -285,5 +285,41 @@ button.jw-chip:hover {
   .jw-tile-bg {
     transform: none;
     will-change: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .jw-page-header-border {
+    border-color: #333;
+  }
+
+  .jw-page-title {
+    color: #f0f0f0;
+  }
+
+  .jw-page-meta p {
+    color: #666;
+  }
+
+  .jw-filters-outer {
+    border-color: #333;
+  }
+
+  button.jw-chip {
+    border-color: #555;
+    color: #555;
+  }
+
+  button.jw-chip:hover {
+    border-color: #555;
+    color: #ccc;
+  }
+
+  .jw-tile {
+    background: #1a1a1a;
+  }
+
+  .jw-tile-bg {
+    background-color: #1a1a1a;
   }
 }

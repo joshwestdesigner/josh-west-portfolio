@@ -104,7 +104,7 @@
 
 .jw-skill {
   padding: 7px 14px;
-  border: 1px solid #666;
+  border: 1px solid #aaa;
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -194,5 +194,54 @@
 
   .jw-about-email {
     font-size: 18px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .jw-about-content-col {
+    border-color: #333;
+  }
+
+  .jw-about-eyebrow {
+    color: #666;
+  }
+
+  .jw-about-name {
+    color: #f0f0f0;
+  }
+
+  .jw-about-role {
+    color: #888;
+    border-color: #333;
+  }
+
+  .jw-about-bio p {
+    color: #aaa;
+  }
+
+  .jw-about-section-label,
+  .jw-about-contact-label {
+    color: #666;
+  }
+
+  .jw-skill {
+    border-color: #333;
+    color: #888;
+  }
+
+  .jw-about-contact {
+    border-color: #333;
+  }
+
+  .jw-about-email {
+    color: #f0f0f0;
+  }
+
+  .jw-about-links a {
+    color: #888;
+  }
+
+  .jw-about-links a:hover {
+    color: #f0f0f0;
   }
 }
