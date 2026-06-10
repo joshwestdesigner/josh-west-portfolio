@@ -45,6 +45,12 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 .jw-project-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .jw-tag { padding: 6px 12px; border: 1px solid #666; color: #666; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Inter', sans-serif; border-radius: 999px; }
 
+/* Meta strip */
+.jw-project-meta-strip { border-bottom: 1px solid #bbb; animation: fadeUp 0.5s ease 0.15s both; }
+.jw-project-meta-inner { max-width: 1400px; margin: 0 auto; padding: 24px 32px; display: grid; grid-template-columns: 180px 220px 1fr; gap: 32px; }
+.jw-project-meta-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-bottom: 8px; }
+.jw-project-meta-value { font-size: 13px; color: #111; line-height: 1.4; font-family: 'Inter', sans-serif; }
+
 /* Intro */
 .jw-project-desc { max-width: 1400px; margin: 0 auto; padding: 48px 32px; animation: fadeUp 0.5s ease 0.2s both; }
 .jw-project-desc p { font-size: 16px; line-height: 1.75; color: #444; max-width: 680px; text-wrap: pretty; margin-bottom: 20px; }
@@ -127,6 +133,9 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
   .jw-back a { color: #666; }
   .jw-back a:hover { color: #f0f0f0; }
   .jw-foot-outer { border-color: #333; }
+  .jw-project-meta-strip { border-color: #333; }
+  .jw-project-meta-label { color: #666; }
+  .jw-project-meta-value { color: #f0f0f0; }
   .jw-foot-copy, .jw-foot-email { color: #666; }
   .jw-foot-email:hover { color: #f0f0f0; }
 }
@@ -159,6 +168,23 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
       <span class="jw-tag">Campaign</span>
       <span class="jw-tag">Branding</span>
       <span class="jw-tag">OOH</span>
+    </div>
+  </div>
+</div>
+
+<div class="jw-project-meta-strip">
+  <div class="jw-project-meta-inner">
+    <div class="jw-project-meta-item">
+      <div class="jw-project-meta-label">Role</div>
+      <div class="jw-project-meta-value">Senior Designer</div>
+    </div>
+    <div class="jw-project-meta-item">
+      <div class="jw-project-meta-label">Studio</div>
+      <div class="jw-project-meta-value">Citi In-house Studio</div>
+    </div>
+    <div class="jw-project-meta-item">
+      <div class="jw-project-meta-label">Goal</div>
+      <div class="jw-project-meta-value">Create a design system to unify Citi Private Company Access event collateral across the organisation</div>
     </div>
   </div>
 </div>
