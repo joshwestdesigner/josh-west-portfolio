@@ -86,10 +86,18 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 .jw-collage-wrap { overflow: hidden; line-height: 0; }
 .jw-collage-wrap img { display: block; width: calc(100% + 46px); margin: -19px -23px; }
 
+/* Next project */
+.jw-next-project { border-top: 1px solid #bbb; }
+.jw-next-project-link { display: block; text-decoration: none; }
+.jw-next-project-inner { max-width: 1400px; margin: 0 auto; padding: 48px 32px; display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+.jw-next-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-bottom: 12px; }
+.jw-next-client { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-bottom: 8px; }
+.jw-next-title { font-size: 48px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; color: #111; line-height: 1; transition: color 0.2s; }
+.jw-next-arrow { font-size: 40px; color: #666; flex-shrink: 0; transition: transform 0.2s, color 0.2s; line-height: 1; }
+.jw-next-project-link:hover .jw-next-title { color: #49B649; }
+.jw-next-project-link:hover .jw-next-arrow { transform: translateX(8px); color: #49B649; }
+
 /* Back / footer */
-.jw-back { max-width: 1400px; margin: 0 auto; padding: 48px 32px; }
-.jw-back a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; }
-.jw-back a:hover { color: #111; }
 .jw-foot-outer { border-top: 1px solid #bbb; }
 .jw-foot-row { max-width: 1400px; margin: 0 auto; padding: 32px; display: flex; justify-content: space-between; align-items: center; }
 .jw-foot-copy { font-size: 10px; letter-spacing: 0.1em; color: #777; text-transform: uppercase; font-family: 'Inter', sans-serif; }
@@ -136,6 +144,9 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
   .jw-project-meta-strip { border-color: #333; }
   .jw-project-meta-label { color: #666; }
   .jw-project-meta-value { color: #f0f0f0; }
+  .jw-next-project { border-color: #333; }
+  .jw-next-label, .jw-next-client, .jw-next-arrow { color: #666; }
+  .jw-next-title { color: #f0f0f0; }
   .jw-foot-copy, .jw-foot-email { color: #666; }
   .jw-foot-email:hover { color: #f0f0f0; }
 }
@@ -259,8 +270,17 @@ body { font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-
 
 </div>
 
-<div class="jw-back">
-  <a href="../index.html">&#8592; Back to work</a>
+<div class="jw-next-project">
+  <a href="paris-paralympic-pins.html" class="jw-next-project-link">
+    <div class="jw-next-project-inner">
+      <div>
+        <div class="jw-next-label">Next</div>
+        <div class="jw-next-client">Citi</div>
+        <div class="jw-next-title">Paris Paralympic Pins</div>
+      </div>
+      <span class="jw-next-arrow">&#8594;</span>
+    </div>
+  </a>
 </div>
 
 <div class="jw-foot-outer">
