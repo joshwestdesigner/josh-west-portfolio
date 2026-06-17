@@ -102,6 +102,10 @@
   animation: fadeUp 0.5s ease 0.2s both;
 }
 
+.jw-project-images + .jw-project-desc {
+  padding-top: 0;
+}
+
 .jw-project-desc p {
   font-size: 16px;
   line-height: 1.75;
