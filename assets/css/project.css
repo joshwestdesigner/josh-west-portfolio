@@ -126,6 +126,7 @@
 }
 
 .jw-project-images img,
+.jw-project-images video,
 .jw-img-grid img {
   width: 100%;
   height: auto;
