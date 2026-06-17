@@ -5,7 +5,7 @@
   --jw-client-color: #666;
   --jw-tag-border-color: #666;
   --jw-tag-color: #666;
-  --jw-desc-padding: 48px 32px;
+  --jw-desc-padding: 48px 32px 64px;
   --jw-images-padding: 0 32px 64px;
   --jw-images-gap: 64px;
   --jw-copy-text-wrap: pretty;
