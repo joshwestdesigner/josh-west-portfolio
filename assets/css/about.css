@@ -128,6 +128,23 @@
   color: #49B649;
 }
 
+.jw-draw-send {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0 2px;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  transition: color 0.15s, opacity 0.15s;
+}
+
+.jw-draw-send:hover           { color: #fff; }
+.jw-draw-send.jw-send-loading { opacity: 0.35; cursor: not-allowed; }
+.jw-draw-send.jw-send-done    { color: #49B649; }
+.jw-draw-send.jw-send-error   { color: #ff4757; }
+
 .jw-about-photo-col img {
   width: 100%;
   height: 100%;

@@ -68,6 +68,12 @@
       </button>
       <span class="jw-draw-div"></span>
       <button class="jw-draw-clear">Clear</button>
+      <span class="jw-draw-div"></span>
+      <button class="jw-draw-send" title="Send to Josh">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
     </div>
   </div>
 
@@ -137,7 +143,17 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+// ── Fill these in after setting up EmailJS + ImgBB ──────────────────────────
+const EMAILJS_PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID  = 'YOUR_EMAILJS_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID';
+const IMGBB_KEY           = 'YOUR_IMGBB_KEY';
+// ────────────────────────────────────────────────────────────────────────────
+
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
 (function () {
   const container = document.querySelector('.jw-about-photo-col');
   const canvas    = container.querySelector('.jw-draw-canvas');
@@ -243,6 +259,48 @@
       container.querySelectorAll('.jw-draw-swatch').forEach(b => b.classList.remove('jw-active'));
     } else {
       container.querySelector(`.jw-draw-swatch[data-color="${color}"]`)?.classList.add('jw-active');
+    }
+  });
+
+  // Send button
+  const sendBtn = container.querySelector('.jw-draw-send');
+  sendBtn.addEventListener('click', async () => {
+    // Skip if nothing drawn
+    const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    let hasContent = false;
+    for (let i = 3; i < pixels.length; i += 400) {
+      if (pixels[i] > 10) { hasContent = true; break; }
+    }
+    if (!hasContent) return;
+
+    sendBtn.disabled = true;
+    sendBtn.classList.add('jw-send-loading');
+
+    try {
+      // Composite photo + drawing into one JPEG
+      const img = container.querySelector('img');
+      const tmp = document.createElement('canvas');
+      tmp.width  = canvas.width;
+      tmp.height = canvas.height;
+      const tctx = tmp.getContext('2d');
+      tctx.drawImage(img, 0, 0, tmp.width, tmp.height);
+      tctx.drawImage(canvas, 0, 0);
+      const jpeg = tmp.toDataURL('image/jpeg', 0.75).split(',')[1];
+
+      // Upload to ImgBB
+      const fd = new FormData();
+      fd.append('image', jpeg);
+      const res  = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`, { method: 'POST', body: fd });
+      const { data } = await res.json();
+
+      // Send email
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { image_url: data.url });
+
+      sendBtn.classList.replace('jw-send-loading', 'jw-send-done');
+      setTimeout(() => { sendBtn.classList.remove('jw-send-done'); sendBtn.disabled = false; }, 3000);
+    } catch (err) {
+      sendBtn.classList.replace('jw-send-loading', 'jw-send-error');
+      setTimeout(() => { sendBtn.classList.remove('jw-send-error'); sendBtn.disabled = false; }, 3000);
     }
   });
 
