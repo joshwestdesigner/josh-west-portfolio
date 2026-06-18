@@ -24,25 +24,21 @@
 }
 
 .jw-draw-clear {
-  position: absolute;
-  top: 16px; right: 16px;
-  background: #49B649;
-  border: 1px solid #49B649;
-  color: #111111;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0 2px;
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 8px 16px;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s;
-  pointer-events: none;
+  line-height: 1;
+  transition: color 0.1s;
 }
 
-.jw-about-photo-col:hover .jw-draw-clear {
-  opacity: 1;
-  pointer-events: all;
+.jw-draw-clear:hover {
+  color: #fff;
 }
 
 .jw-draw-toolbar {
