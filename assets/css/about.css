@@ -25,15 +25,15 @@
 
 .jw-draw-clear {
   position: absolute;
-  bottom: 16px; right: 16px;
+  top: 16px; right: 16px;
   background: none;
   border: 1px solid #49B649;
   color: #49B649;
   font-family: 'Inter', sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 6px 12px;
+  padding: 8px 16px;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s;
