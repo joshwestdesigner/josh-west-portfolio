@@ -279,24 +279,39 @@ emailjs.init(EMAILJS_PUBLIC_KEY);
     sendBtn.classList.add('jw-send-loading');
 
     try {
-      // Composite photo + drawing into one JPEG.
-      // Scale by devicePixelRatio so the email image is sharp on retina/mobile screens.
+      // Composite photo + drawing.
+      // Always output at the natural photo's portrait dimensions (max 800px wide)
+      // so the email image is consistent regardless of mobile vs desktop canvas size.
       const img = container.querySelector('img');
-      const dpr = Math.min(window.devicePixelRatio || 1, 3);
-      const cw  = canvas.width;
-      const ch  = canvas.height;
-      const tmp = document.createElement('canvas');
-      tmp.width  = cw * dpr;
-      tmp.height = ch * dpr;
+      const iw  = img.naturalWidth, ih = img.naturalHeight;
+      const cw  = canvas.width,     ch = canvas.height;
+      const outW = Math.min(iw, 800);
+      const outH = Math.round(ih * outW / iw);
+      const tmp  = document.createElement('canvas');
+      tmp.width  = outW;
+      tmp.height = outH;
       const tctx = tmp.getContext('2d');
-      tctx.scale(dpr, dpr);
-      // Replicate object-fit:cover; object-position:center top
-      const iw = img.naturalWidth, ih = img.naturalHeight;
-      const scale = Math.max(cw / iw, ch / ih);
-      const sx = ((iw * scale) - cw) / 2 / scale;
-      const sy = 0;
-      tctx.drawImage(img, sx, sy, cw / scale, ch / scale, 0, 0, cw, ch);
-      tctx.drawImage(canvas, 0, 0, cw, ch);
+
+      // Draw the full portrait photo
+      tctx.drawImage(img, 0, 0, iw, ih, 0, 0, outW, outH);
+
+      // Work out which region of the natural photo the mobile/desktop canvas was showing
+      // (replicates object-fit:cover; object-position:center top)
+      const mobileScale = Math.max(cw / iw, ch / ih);
+      const cropSX = ((iw * mobileScale) - cw) / 2 / mobileScale; // natural-px offset x
+      const cropSY = 0;
+
+      // Map canvas strokes into the output portrait coordinate space
+      const drawScaleX = (outW / iw) / mobileScale;
+      const drawScaleY = (outH / ih) / mobileScale;
+      const drawOffX   = cropSX / iw * outW;
+      const drawOffY   = cropSY / ih * outH;
+      tctx.save();
+      tctx.translate(drawOffX, drawOffY);
+      tctx.scale(drawScaleX, drawScaleY);
+      tctx.drawImage(canvas, 0, 0);
+      tctx.restore();
+
       const jpeg = tmp.toDataURL('image/jpeg', 0.85).split(',')[1];
 
       // Upload to Cloudinary (unsigned)
