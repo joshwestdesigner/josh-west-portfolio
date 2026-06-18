@@ -47,6 +47,8 @@
 
   <div class="jw-about-photo-col">
     <img src="profile.webp" alt="Josh West">
+    <canvas class="jw-draw-canvas"></canvas>
+    <button class="jw-draw-clear">Clear</button>
   </div>
 
   <div class="jw-about-content-col">
@@ -115,5 +117,72 @@
   </div>
 </div>
 
+<script>
+(function () {
+  const container = document.querySelector('.jw-about-photo-col');
+  const canvas    = container.querySelector('.jw-draw-canvas');
+  const clearBtn  = container.querySelector('.jw-draw-clear');
+  const ctx       = canvas.getContext('2d');
+  const GREEN     = '#49B649';
+  let drawing = false, lastX = 0, lastY = 0;
+
+  function resize() {
+    const data = canvas.toDataURL();
+    canvas.width  = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+    setupCtx();
+    const img = new Image();
+    img.onload = () => ctx.drawImage(img, 0, 0);
+    img.src = data;
+  }
+
+  function setupCtx() {
+    ctx.strokeStyle = GREEN;
+    ctx.fillStyle   = GREEN;
+    ctx.lineWidth   = 3;
+    ctx.lineCap     = 'round';
+    ctx.lineJoin    = 'round';
+  }
+
+  function pos(e) {
+    const r = canvas.getBoundingClientRect();
+    const t = e.touches ? e.touches[0] : e;
+    return [
+      (t.clientX - r.left) * (canvas.width  / r.width),
+      (t.clientY - r.top)  * (canvas.height / r.height),
+    ];
+  }
+
+  canvas.addEventListener('mousedown', e => {
+    drawing = true;
+    [lastX, lastY] = pos(e);
+    ctx.beginPath();
+    ctx.arc(lastX, lastY, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  canvas.addEventListener('mousemove', e => {
+    if (!drawing) return;
+    const [x, y] = pos(e);
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    [lastX, lastY] = [x, y];
+  });
+
+  canvas.addEventListener('mouseup',    () => drawing = false);
+  canvas.addEventListener('mouseleave', () => drawing = false);
+
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; [lastX, lastY] = pos(e); }, { passive: false });
+  canvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!drawing) return; const [x, y] = pos(e); ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke(); [lastX, lastY] = [x, y]; }, { passive: false });
+  canvas.addEventListener('touchend',   () => drawing = false);
+
+  clearBtn.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+
+  new ResizeObserver(resize).observe(container);
+  resize();
+})();
+</script>
 </body>
 </html>
