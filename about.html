@@ -279,12 +279,19 @@ emailjs.init(EMAILJS_PUBLIC_KEY);
 
     try {
       // Composite photo + drawing into one JPEG
+      // Replicate object-fit:cover; object-position:center top so the photo
+      // matches exactly what is visible on screen behind the canvas strokes.
       const img = container.querySelector('img');
       const tmp = document.createElement('canvas');
       tmp.width  = canvas.width;
       tmp.height = canvas.height;
       const tctx = tmp.getContext('2d');
-      tctx.drawImage(img, 0, 0, tmp.width, tmp.height);
+      const iw = img.naturalWidth, ih = img.naturalHeight;
+      const cw = tmp.width,        ch = tmp.height;
+      const scale = Math.max(cw / iw, ch / ih);
+      const sx = ((iw * scale) - cw) / 2 / scale; // center x
+      const sy = 0;                                 // top y
+      tctx.drawImage(img, sx, sy, cw / scale, ch / scale, 0, 0, cw, ch);
       tctx.drawImage(canvas, 0, 0);
       const jpeg = tmp.toDataURL('image/jpeg', 0.75).split(',')[1];
 
