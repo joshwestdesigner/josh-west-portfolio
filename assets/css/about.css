@@ -80,6 +80,15 @@
   margin-bottom: 0;
 }
 
+.jw-about-bio a {
+  color: #49B649;
+  text-decoration: none;
+}
+
+.jw-about-bio a:hover {
+  text-decoration: underline;
+}
+
 .jw-about-section {
   margin-bottom: 48px;
 }
