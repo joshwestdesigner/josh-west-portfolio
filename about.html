@@ -48,6 +48,20 @@
   <div class="jw-about-photo-col">
     <img src="profile.webp" alt="Josh West">
     <canvas class="jw-draw-canvas"></canvas>
+    <div class="jw-draw-toolbar">
+      <button class="jw-draw-swatch jw-active" data-color="#49B649" style="--c:#49B649"></button>
+      <button class="jw-draw-swatch" data-color="#111111" style="--c:#111111"></button>
+      <button class="jw-draw-swatch" data-color="#ffffff" style="--c:#ffffff"></button>
+      <button class="jw-draw-swatch" data-color="#ff4757" style="--c:#ff4757"></button>
+      <button class="jw-draw-swatch" data-color="#1e90ff" style="--c:#1e90ff"></button>
+      <button class="jw-draw-swatch" data-color="#ffa502" style="--c:#ffa502"></button>
+      <span class="jw-draw-div"></span>
+      <button class="jw-draw-weight jw-active" data-weight="2"></button>
+      <button class="jw-draw-weight" data-weight="5"></button>
+      <button class="jw-draw-weight" data-weight="12"></button>
+      <span class="jw-draw-div"></span>
+      <button class="jw-draw-erase">Erase</button>
+    </div>
     <button class="jw-draw-clear">Clear</button>
   </div>
 
@@ -123,28 +137,37 @@
   const canvas    = container.querySelector('.jw-draw-canvas');
   const clearBtn  = container.querySelector('.jw-draw-clear');
   const ctx       = canvas.getContext('2d');
-  const GREEN     = '#49B649';
+  const ERASE_CURSOR = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E\") 10 10, cell";
+
   let drawing = false, lastX = 0, lastY = 0;
+  let color   = '#49B649';
+  let weight  = 2;
+  let erasing = false;
 
   function resize() {
     const data = canvas.toDataURL();
     canvas.width  = container.offsetWidth;
     canvas.height = container.offsetHeight;
-    setupCtx();
     const img = new Image();
     img.onload = () => ctx.drawImage(img, 0, 0);
     img.src = data;
   }
 
-  function setupCtx() {
-    ctx.strokeStyle = GREEN;
-    ctx.fillStyle   = GREEN;
-    ctx.lineWidth   = 3;
-    ctx.lineCap     = 'round';
-    ctx.lineJoin    = 'round';
+  function applyCtx() {
+    ctx.lineCap  = 'round';
+    ctx.lineJoin = 'round';
+    if (erasing) {
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.lineWidth = Math.max(weight * 5, 18);
+    } else {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.strokeStyle = color;
+      ctx.fillStyle   = color;
+      ctx.lineWidth   = weight;
+    }
   }
 
-  function pos(e) {
+  function getPos(e) {
     const r = canvas.getBoundingClientRect();
     const t = e.touches ? e.touches[0] : e;
     return [
@@ -153,32 +176,68 @@
     ];
   }
 
-  canvas.addEventListener('mousedown', e => {
+  function onDown(e) {
     drawing = true;
-    [lastX, lastY] = pos(e);
-    ctx.beginPath();
-    ctx.arc(lastX, lastY, 1.5, 0, Math.PI * 2);
-    ctx.fill();
-  });
+    [lastX, lastY] = getPos(e);
+    applyCtx();
+    if (!erasing) {
+      ctx.beginPath();
+      ctx.arc(lastX, lastY, weight / 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
 
-  canvas.addEventListener('mousemove', e => {
+  function onMove(e) {
     if (!drawing) return;
-    const [x, y] = pos(e);
+    const [x, y] = getPos(e);
+    applyCtx();
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     ctx.lineTo(x, y);
     ctx.stroke();
     [lastX, lastY] = [x, y];
-  });
+  }
 
+  canvas.addEventListener('mousedown', onDown);
+  canvas.addEventListener('mousemove', onMove);
   canvas.addEventListener('mouseup',    () => drawing = false);
   canvas.addEventListener('mouseleave', () => drawing = false);
-
-  canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; [lastX, lastY] = pos(e); }, { passive: false });
-  canvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!drawing) return; const [x, y] = pos(e); ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke(); [lastX, lastY] = [x, y]; }, { passive: false });
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); onDown(e); }, { passive: false });
+  canvas.addEventListener('touchmove',  e => { e.preventDefault(); onMove(e); }, { passive: false });
   canvas.addEventListener('touchend',   () => drawing = false);
 
   clearBtn.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+
+  container.querySelectorAll('.jw-draw-swatch').forEach(btn => {
+    btn.addEventListener('click', () => {
+      color   = btn.dataset.color;
+      erasing = false;
+      canvas.style.cursor = '';
+      container.querySelectorAll('.jw-draw-swatch').forEach(b => b.classList.remove('jw-active'));
+      btn.classList.add('jw-active');
+      container.querySelector('.jw-draw-erase').classList.remove('jw-active');
+    });
+  });
+
+  container.querySelectorAll('.jw-draw-weight').forEach(btn => {
+    btn.addEventListener('click', () => {
+      weight = parseInt(btn.dataset.weight, 10);
+      container.querySelectorAll('.jw-draw-weight').forEach(b => b.classList.remove('jw-active'));
+      btn.classList.add('jw-active');
+    });
+  });
+
+  const eraseBtn = container.querySelector('.jw-draw-erase');
+  eraseBtn.addEventListener('click', () => {
+    erasing = !erasing;
+    canvas.style.cursor = erasing ? ERASE_CURSOR : '';
+    eraseBtn.classList.toggle('jw-active', erasing);
+    if (erasing) {
+      container.querySelectorAll('.jw-draw-swatch').forEach(b => b.classList.remove('jw-active'));
+    } else {
+      container.querySelector(`.jw-draw-swatch[data-color="${color}"]`)?.classList.add('jw-active');
+    }
+  });
 
   new ResizeObserver(resize).observe(container);
   resize();
