@@ -66,6 +66,13 @@
   pointer-events: all;
 }
 
+@media (hover: none) {
+  .jw-draw-toolbar {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
 .jw-draw-swatch {
   width: 16px;
   height: 16px;

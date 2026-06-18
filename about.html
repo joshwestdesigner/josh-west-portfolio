@@ -228,7 +228,8 @@ emailjs.init(EMAILJS_PUBLIC_KEY);
   canvas.addEventListener('mouseleave', () => drawing = false);
   canvas.addEventListener('touchstart', e => { e.preventDefault(); onDown(e); }, { passive: false });
   canvas.addEventListener('touchmove',  e => { e.preventDefault(); onMove(e); }, { passive: false });
-  canvas.addEventListener('touchend',   () => drawing = false);
+  canvas.addEventListener('touchend',    () => drawing = false);
+  canvas.addEventListener('touchcancel', () => drawing = false);
 
   clearBtn.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
 
